@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joc X și 0</title>
+<style>
+  @keyframes fall {
+    to {
+      transform: translateY(100vh);
+    }
+  }
+
+  .flower, .blue-flower {
+    position: fixed;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: fall linear infinite;
+  }
+
+  .flower {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+  }
+
+  .blue-flower {
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+  }
+
+  body {
+    background-color: pink;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .invitation {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .play-button {
+    background-color: #ff00ff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  .play-button:hover {
+    background-color: #ff66ff;
+  }
+</style>
+</head>
+<body>
+
+<div class="invitation">
+  <h1>Aștepți o provocare nouă? Vino să te măsori cu prietenii în cel mai clasic și distractiv joc: X și 0! E simplu, e rapid și e amuzant. Apasă aici și începe distracția!</h1>
+  <button class="play-button" onclick="window.location.href='file:///C:/Users/Andreea/Desktop/tic_tac_toe-main/index.html'">Joacă acum</button>
+</div>
+
+<script>
+  function createFlower(type) {
+    const flower = document.createElement('div');
+    flower.classList.add(type);
+    flower.style.left = `${Math.random() * 100}vw`;
+    flower.style.animationDuration = `${Math.random() * 3 + 5}s`; // Slightly longer for variation
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+      flower.remove();
+    }, 5000);
+  }
+
+  setInterval(() => createFlower('flower'), 300);
+  setInterval(() => createFlower('blue-flower'), 450); // Different interval for variation
+</script>
+
+</body>
+</html>
